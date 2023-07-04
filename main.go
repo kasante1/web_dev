@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"web_dev/cli_args"
+	"web_dev_builder/cli_args"
 	"os"
 )
 
