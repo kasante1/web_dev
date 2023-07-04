@@ -30,8 +30,9 @@ func NewProjectDirectry(cli_argument string) {
 		fmt.Println(file_status)
 	}
 	// create main.go file
-	dir_contents.CreateProjectFiles(project_directory, "main.html", dir_contents.MainFileContents())
-	dir_contents.CreateProjectFiles(project_directory, "main.css", "")
+	dir_contents.CreateProjectFiles(project_directory, cli_argument + ".html", dir_contents.HtmlFileContents(cli_argument))
+	dir_contents.CreateProjectFiles(project_directory, cli_argument + ".css", dir_contents.CssFileContents())
+	dir_contents.CreateProjectFiles(project_directory, cli_argument + ".js", dir_contents.JsFileContents())
 }
 
 // is the provided cli_argument a string

@@ -5,24 +5,32 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"runtime"
-	"strings"
-	"regexp"
 )
+
 
 
 //html file
 // file contents
+// get project name from cli
+// use it to link the css and js files
+// to the html
 
-func HtmlFileContents() string {
-	var mainFileContents string = `<!DOCTYPE html>
+
+func HtmlFileContents(project_name string) string {
+	var firstSection string = `<!DOCTYPE html>
 	<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="loopstudio.css" />
-		<title>Document</title>
+	`
+	var midSection string =	`<link rel="stylesheet" href="`+ project_name +`.css" />
+		<script src="`+ project_name +`.js" defer></script>
+
+		<title>`+ project_name +`</title>
+	`
+
+	var lastSection string = `
 	</head>
 	<body>
 		<nav>
@@ -35,7 +43,9 @@ func HtmlFileContents() string {
 	</html> 
 	
 `
-	return mainFileContents
+	var fileContents string = firstSection + midSection + lastSection
+
+	return fileContents
 }
 
 
@@ -57,6 +67,7 @@ func JsFileContents() string{
 	return jsFileContents
 
 }
+
 
 
 // create project files
